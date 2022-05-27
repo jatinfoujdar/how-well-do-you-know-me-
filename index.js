@@ -1,40 +1,39 @@
-
-var readlineSync = require('readline-sync');
-var chalk = require('chalk');
-
+var readlineSync = require("readline-sync");
 var score = 0;
 
-const useranswer = readlineSync.question("What is your name? ")
+var userName = readlineSync.question("what's your name? ");
 
-console.log(chalk.blue('Welcome %s'), useranswer);
-const useranswer1 = readlineSync.question(chalk.green('Are you excited to play to game!! [y/n]'))
+console.log("welcome : " + userName + "  -Do you know jatin?");
+console.log("-----------")
 
-if (useranswer1 == 'y') {
-  console.log(chalk.red("You are all set for the game...\n Please give all the answers in small case "))
 
-  function play(question, answer) {
-    var useranswer = readlineSync.question(question)
+function play(question, answer) {
+  var userAnswer = readlineSync.question(question);
 
-    if (useranswer.toLowerCase() == answer.toLowerCase()) {
-      console.log(chalk.green.bgBlue.bold('Right'));
-      score++;
-    }
+  if (userAnswer === answer) {
+    console.log("right!");
+    score = score + 1;
 
-    else {
-      console.log(chalk.red.bgBlue.bold('Wrong...'))
-      score--;
-    }
   }
+  else {
+    console.log("you are wrong ");
+  }
+  console.log("current score:= " + score);
+  console.log("--------------------")
+}
 
-  var questions = [{
-    question: "Where Do Jatin Live\n",
-
-    answer: "Bharatpur",
-  },
+var question = [
   {
+  question: "where do i live? ",
+  answer: "bharatpur"
+},
+  {
+  question: "My favorite superhero would be?",
+  answer: "ironman"
+},{
     question: "What is my hobby?\n",
 
-    answer: "Basketball",
+    answer: "basketball",
   },
   {
     question: "What is my favourite food?\n",
@@ -46,27 +45,12 @@ if (useranswer1 == 'y') {
 
     answer: "black",
   },
+];
+
+
+for(var i=0;i<question.length;i++)
   {
-    question: "Tell the name of mine given by my friends\n",
-
-    answer: "noone",
-  },
-  {
-    question: "What is my favourite subject?\n",
-
-    answer: "History",
-  },
-  ]
-
-  for (i = 0; i < questions.length; i++) {
-    var currentquestion = questions[i];
-    play(currentquestion.question, currentquestion.answer)
+    var currentQuestion =question[i];
+    play(currentQuestion.question , currentQuestion.answer)
   }
-
-  console.log(chalk.blue("Your Score is: " + score));
-
-
-}
-else {
-  console.log(chalk.red('Thank You for Coming.....'))
-}
+console.log("thank you for coming........! " +userName);
